@@ -16,8 +16,7 @@ docker build --no-cache -t jforge/jenkins-inbound-agent .
 
 # Usage
 
-Use the jenkins-inbound-agent command line options or use the corresponding 
-environment variables.
+Use the jenkins-inbound-agent command line options or use corresponding environment variables.
 
 The privileged mode (`--privileged`) and the docker daemon socket mount
 (`-v /var/run/docker.sock:/var/run/docker.sock`) are required when using
