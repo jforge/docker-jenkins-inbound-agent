@@ -10,6 +10,8 @@ USER root
 # Alpine seems to come with libcurl baked in, which is prone to mismatching
 # with newer versions of curl. The solution is to upgrade libcurl.
 RUN apk update && apk add -u libcurl curl
+# add mqtt tools
+RUN apk add mosquitto-clients jq
 # Install Docker client
 ARG DOCKER_VERSION=20.10.2
 ARG DOCKER_COMPOSE_VERSION=1.27.4

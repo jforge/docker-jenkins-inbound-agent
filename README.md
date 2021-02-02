@@ -3,6 +3,9 @@
 The base image jenkins/inbound-agent is enhanced with a docker client and with 
 docker-compose to get an image useful for jenkins builds with respective requirements.
 
+To be able to use MQTT and to ease handling of json objects the mosquitto_clients
+and jq library are added.
+
 Be aware that Docker in Docker is insecure and can compromise your host, 
 if you run untrusted Jenkins jobs.
 
