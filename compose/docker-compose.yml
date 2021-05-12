@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   jenkins_inbound-agent:
-    image: jforge/jenkins-inbound-agent
+    image: jforge/jenkins-inbound-agent:latest
     init: true
     privileged: true
     environment:
@@ -9,5 +9,4 @@ services:
       - JENKINS_SECRET=${JENKINS_AGENT_SECRET}
       - JENKINS_AGENT_NAME=${JENKINS_AGENT_NAME}
       - JENKINS_WEB_SOCKET=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - DIND=true
