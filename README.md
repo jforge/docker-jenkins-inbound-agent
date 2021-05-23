@@ -1,9 +1,9 @@
 # Jenkins Inbound Agent with enhanced capabilities
 
-This docker images is originally based on jenkins/inbound-agent and was
-replaced with the image odavid/jenkins-jnlp-slave:alpine in order to resolve
-the docker-in-docker requirement for more flexible CI agent deployments, that
-are required to support docker and docker-compose calls in the qa environment.
+This docker image is originally based on jenkins/inbound-agent and was
+replaced with the alpine image of [odavid/jenkins-jnlp-slave](https://hub.docker.com/r/odavid/jenkins-jnlp-slave)
+in order to resolve the docker-in-docker requirement for more flexible CI agent 
+deployments required to support docker and docker-compose calls in the qa environment.
 
 To be able to use MQTT and to ease handling of json objects the mosquitto_clients
 and jq library are added.
