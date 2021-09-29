@@ -11,5 +11,5 @@ RUN set -eux \
     apk add --no-cache \
 		  curl \
 		  mosquitto-clients \
-              yarn \
+      yarn \
 		  jq
