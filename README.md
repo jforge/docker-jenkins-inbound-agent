@@ -16,7 +16,7 @@ To build the image manually:
 docker build --no-cache -t jforge/jenkins-inbound-agent .
 ```
 
-# Usage
+## Usage
 
 Use the jenkins-inbound-agent command line options or use corresponding environment variables.
 
@@ -29,7 +29,7 @@ by setting the flag DIND=true as an environment variable.
 Refer to the jenkins master configuration for this agent node for the node label
 and ensure that configuration uses `/home/jenkins/agent` as the remote root folder.
 
-## Docker run
+### Docker run
 
 ```
 docker run --init --privileged \
@@ -42,7 +42,7 @@ docker run --init --privileged \
   jforge/jenkins-inbound-agent:latest
 ```
 
-## Docker-compose
+### Docker-compose
 
 See the `compose` folder for a ready to use compose file.
 Just create an .env file for it (or environment variables on the shell) 
@@ -68,12 +68,12 @@ services:
       - TINI_SUBREAPER=true
 ```
 
-## Using the image with a Jenkins Pipeline
+### Using the image with a Jenkins Pipeline
 
 To use the image with the added feature prepare the Jenkins node on the master
 and start the node as described above.
 
-## Zombie Reaping (removing orphaned processes)
+### Zombie Reaping (removing orphaned processes)
 
 In case of orphaned process the [tini program](https://github.com/krallin/tini)
 is responsible for removing them and performing signal forwarding. 
@@ -88,6 +88,18 @@ PID namespace isolation, the Tini program should be registered as a process
 subreaper by setting the `TINI_SUBREAPER` environment variable to `true`.
 This ensures the orphaned processes to be re-parented as children of the 
 Tini program which can then remove them to complete its execution.
+
+## Additional tools
+
+To test further tools added to the Dockerfile apk call, use another entrypoint
+and say `apk add <package_name>` to verify the integration into a new image:
+
+```
+docker run -it --rm --entrypoint /bin/bash jforge/jenkins-inbound-agent:additional-tools  
+```
+
+Verify the availability of the tools with `./test/review-tools.sh`.
+
 
 ## References
 

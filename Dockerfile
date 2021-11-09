@@ -13,5 +13,6 @@ RUN set -eux \
       jq \
       mosquitto-clients \
       yarn \
+      npm \
       python2 \
       make \

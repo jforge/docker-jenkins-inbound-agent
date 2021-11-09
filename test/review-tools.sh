@@ -22,6 +22,9 @@ runAgentShell "find / -name mosquitto_* | xargs ls -al"
 echo "<?> yarn:"
 runAgentShell "yarn --version"
 
+echo "<?> npm:"
+runAgentShell "npm --version"
+
 echo "<?> python:"
 runAgentShell "python --version"
 
