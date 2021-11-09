@@ -9,7 +9,9 @@ RUN set -eux \
     && echo "Installing additional tools" \
     ; \
     apk add --no-cache \
-		  curl \
-		  mosquitto-clients \
+      curl \
+      jq \
+      mosquitto-clients \
       yarn \
-		  jq
+      python2 \
+      make \
