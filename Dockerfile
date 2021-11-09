@@ -14,5 +14,6 @@ RUN set -eux \
       mosquitto-clients \
       yarn \
       npm \
+      uuidgen \
       python2 \
       make \

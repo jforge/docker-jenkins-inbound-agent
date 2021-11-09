@@ -10,23 +10,25 @@ function runAgentShell {
   docker run -it --rm --entrypoint /bin/bash $IMAGE -c "$COMMAND"
 }
 
-echo "<?> cURL:"
-runAgentShell "curl --version"
+TOOL_VERSION=`cat <<EOM
+[
+  { "curl": "curl --version"  },
+  { "jq": "jq --version" },
+  { "mosquitto tools": "find / -name mosquitto_* | xargs ls -al" },
+  { "yarn": "yarn --version" },
+  { "npm": "npm --version" },
+  { "uuidgen": "uuidgen --version" },
+  { "python": "python --version" },
+  { "make": "make -v" }
+]
+EOM
+`
 
-echo "<?> jq:"
-runAgentShell "jq --version"
-
-echo "<?> mosquitto tools"
-runAgentShell "find / -name mosquitto_* | xargs ls -al"
-
-echo "<?> yarn:"
-runAgentShell "yarn --version"
-
-echo "<?> npm:"
-runAgentShell "npm --version"
-
-echo "<?> python:"
-runAgentShell "python --version"
-
-echo "<?> make":
-runAgentShell "make -v"
+for row in $(echo $TOOL_VERSION | jq -r '.[] | @base64'); do
+  _jq() {
+   echo ${row} | base64 --decode | jq -r ${1}
+  }
+  echo $(_jq 'keys')
+  CMD=`echo $(_jq '.[]')`
+  runAgentShell "$CMD"
+done
