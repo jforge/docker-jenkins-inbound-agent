@@ -38,6 +38,7 @@ docker run --init --privileged \
   -e JENKINS_SECRET=TheAgentSecret  \
   -e JENKINS_AGENT_NAME=MyInboundAgent \
   -e DIND=true \
+  -e TINI_SUBREAPER=true \
   jforge/jenkins-inbound-agent:latest
 ```
 
@@ -64,12 +65,29 @@ services:
       - JENKINS_AGENT_NAME=${JENKINS_AGENT_NAME}
       - JENKINS_WEB_SOCKET=true
       - DIND=true
+      - TINI_SUBREAPER=true
 ```
 
 ## Using the image with a Jenkins Pipeline
 
 To use the image with the added feature prepare the Jenkins node on the master
 and start the node as described above.
+
+## Zombie Reaping (removing orphaned processes)
+
+In case of orphaned process the [tini program](https://github.com/krallin/tini)
+is responsible for removing them and performing signal forwarding. 
+It runs transparently as a single child process (on a container).
+
+Orphan processes consume resources, affect the process identifier namespace they 
+run in and make the environment unstable or unusable, so that they should be removed.
+
+By default, Tini needs to run using the process identifier (PID) 1 to remove 
+orphaned processes. If PID 1 cannot be used or if containers are run without 
+PID namespace isolation, the Tini program should be registered as a process 
+subreaper by setting the `TINI_SUBREAPER` environment variable to `true`.
+This ensures the orphaned processes to be re-parented as children of the 
+Tini program which can then remove them to complete its execution.
 
 ## References
 

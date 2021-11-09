@@ -10,3 +10,4 @@ services:
       - JENKINS_AGENT_NAME=${JENKINS_AGENT_NAME}
       - JENKINS_WEB_SOCKET=true
       - DIND=true
+      - TINI_SUBREAPER=true
