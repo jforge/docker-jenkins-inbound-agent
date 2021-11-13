@@ -14,6 +14,7 @@ TOOL_VERSION=`cat <<EOM
 [
   { "curl": "curl --version"  },
   { "jq": "jq --version" },
+  { "yq": "yq --version" },
   { "mosquitto tools": "find / -name mosquitto_* | xargs ls -al" },
   { "yarn": "yarn --version" },
   { "npm": "npm --version" },

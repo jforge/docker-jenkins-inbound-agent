@@ -11,6 +11,7 @@ RUN set -eux \
     apk add --no-cache \
       curl \
       jq \
+      yq \
       mosquitto-clients \
       yarn \
       npm \
