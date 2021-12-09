@@ -9,6 +9,7 @@ RUN set -eux \
     && echo "Installing additional tools" \
     ; \
     apk add --no-cache \
+      ip6tables \
       curl \
       jq \
       yq \
@@ -18,3 +19,4 @@ RUN set -eux \
       uuidgen \
       python2 \
       make \
+      sipcalc

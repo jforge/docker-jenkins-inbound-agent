@@ -2,7 +2,6 @@
 #
 # Fast review for the expected tools in the image
 #
-
 IMAGE=jforge/jenkins-inbound-agent:additional-tools
 
 function runAgentShell {
@@ -12,7 +11,8 @@ function runAgentShell {
 
 TOOL_VERSION=`cat <<EOM
 [
-  { "curl": "curl --version"  },
+  { "ip6tables": "ip6tables --version" },
+  { "curl": "curl --version" },
   { "jq": "jq --version" },
   { "yq": "yq --version" },
   { "mosquitto tools": "find / -name mosquitto_* | xargs ls -al" },
@@ -20,7 +20,8 @@ TOOL_VERSION=`cat <<EOM
   { "npm": "npm --version" },
   { "uuidgen": "uuidgen --version" },
   { "python": "python --version" },
-  { "make": "make -v" }
+  { "make": "make -v" },
+  { "sipcalc": "sipcalc --version" }
 ]
 EOM
 `

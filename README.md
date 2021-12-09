@@ -103,4 +103,4 @@ Verify the availability of the tools with `./test/review-tools.sh`.
 
 ## References
 
-- [Github Jenkins Inbound Agent Project](https://github.com/jenkinsci/docker-inbound-agent)
+- [GitHub Jenkins Inbound Agent Project](https://github.com/jenkinsci/docker-inbound-agent)
