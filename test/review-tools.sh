@@ -20,8 +20,10 @@ TOOL_VERSION=`cat <<EOM
   { "npm": "npm --version" },
   { "uuidgen": "uuidgen --version" },
   { "python": "python --version" },
-  { "make": "make -v" },
-  { "sipcalc": "sipcalc --version" }
+  { "make": "make -v"},
+  { "sipcalc": "sipcalc --version" },
+  { "sudo": "sudo --version" },
+  { "Xvfb": "type Xvfb" }
 ]
 EOM
 `

@@ -19,4 +19,6 @@ RUN set -eux \
       uuidgen \
       python2 \
       make \
-      sipcalc
+      sipcalc \
+      sudo \
+      xvfb
